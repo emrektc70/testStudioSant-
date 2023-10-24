@@ -14,6 +14,10 @@ type User = {
   age: number;
   gender: string;
   email: string;
+  birthDate: string;
+  phone: string;
+  image: string;
+  username: string
 };
 
 const View: React.FC<Props> = () => {
