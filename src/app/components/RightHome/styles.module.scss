@@ -10,10 +10,16 @@
 .rightContent {
     width: 450px;
     height: 450px;
-    background-color: blue;
+    // background-color: blue;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
 }

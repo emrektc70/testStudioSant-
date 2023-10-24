@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
 type User = {
@@ -8,14 +8,17 @@ type User = {
   age: number;
   gender: string;
   email: string;
-  // ... autres propriétés d'utilisateur
 };
 
 type Props = {
   users: User[];
+  selectedUsers: User[];
+  handleUserSelect: (user: User) => void
 };
 
-const LeftHome: React.FC<Props> = ({ users }) => {
+
+const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) => {
+
   return (
     <div className={styles.left}>
       <div className={styles.leftContent}>
@@ -23,12 +26,16 @@ const LeftHome: React.FC<Props> = ({ users }) => {
         <ul className={styles.userList}>
           {users.map((user) => (
             <li key={user.id} className={styles.userItem}>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={selectedUsers.some((selectedUser) => selectedUser.id === user.id)}
+                onChange={() => handleUserSelect(user)}
+              />
               {user.firstName} {user.lastName}
+              <span>Age: {user.age}</span>
             </li>
           ))}
         </ul>
-
       </div>
     </div>
   );

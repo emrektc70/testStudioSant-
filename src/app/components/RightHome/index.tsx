@@ -1,13 +1,19 @@
 import styles from "./styles.module.scss";
+import Image from 'next/image';
 
-type Props = {};
+import gateau from "./assets/cake.png"
+type Props = {
+  totalAge: number
+};
 
-const View: React.FC<Props> = () => {
+const View: React.FC<Props> = ({ totalAge }) => {
   return (
     <div className={styles.right}>
       <div className={styles.rightContent}>
-        l
+        <Image src={gateau} width={300} height={300} alt="" />
+        <div className={styles.total}>Total de lâge sélectionné : {totalAge}</div>
       </div>
+
     </div>
   )
 };

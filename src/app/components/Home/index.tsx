@@ -15,6 +15,7 @@ type User = {
 };
 
 const View: React.FC<Props> = () => {
+
   const [users, setUsers] = useState<any[]>([]);
 
   const fetchUsers = async () => {
@@ -35,11 +36,23 @@ const View: React.FC<Props> = () => {
     fetchUsers();
   }, []);
 
+  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const [totalAge, setTotalAge] = useState<number>(0);
+
+  const handleUserSelect = (user: User) => {
+    if (selectedUsers.some((selectedUser) => selectedUser.id === user.id)) {
+      setSelectedUsers(selectedUsers.filter((u) => u.id !== user.id));
+      setTotalAge(totalAge - user.age);
+    } else {
+      setSelectedUsers([...selectedUsers, user]);
+      setTotalAge(totalAge + user.age);
+    }
+  };
   return (
     <div className={styles.home}>
       <div className={styles.homeContent}>
-        <LeftHome users={users} />
-        <RightHome />
+        <LeftHome users={users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} />
+        <RightHome totalAge={totalAge} />
       </div>
     </div>
   );
