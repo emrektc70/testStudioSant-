@@ -42,7 +42,7 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
           {
             open === false ?
               <div>
-                Je souhaite chercher une personne              </div> : <div>
+                Faire une recherche            </div> : <div>
                 Annuler
               </div>
           }
