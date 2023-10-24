@@ -13,11 +13,12 @@ type User = {
 type Props = {
   users: User[];
   selectedUsers: User[];
-  handleUserSelect: (user: User) => void
+  handleUserSelect: (user: User) => void;
+  handleDeselectAll: VoidFunction
 };
 
 
-const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) => {
+const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect, handleDeselectAll }) => {
   const [open, setOpen] = useState<boolean>(false)
   const [searchTerm, setSearchTerm] = useState('');
   const filterUsers = () => {
@@ -36,24 +37,24 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      // Code qui utilise document (si nécessaire)
     }
   }, []);
+
+
+
+
   return (
     <div className={styles.left}>
       <div className={styles.leftContent}>
         <h2 className={styles.title}>Liste des utilisateurs :</h2>
         <div className={styles.boxContent}>
-          <input
-            type="checkbox"
-            onClick={handlePrintInput}
-          />
           {
             open === false ?
-              <div>
+              <div onClick={handlePrintInput} className={styles.search}>
                 Faire une recherche
               </div> :
-              <div>
+              <div className={styles.cancel} onClick={handlePrintInput}
+              >
                 Annuler
               </div>
           }
@@ -62,8 +63,9 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
             <div>
               <input
                 type="text"
-                placeholder="Rechercher un utilisateur"
+                placeholder="Rechercher "
                 value={searchTerm}
+                className={styles.searchBar}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
@@ -86,9 +88,14 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
         <div className={styles.number}>
           {
             selectedUsers.length > 0 &&
-            <div>
-              Vous avez selectionné {selectedUsers.length} utilisteurs
-            </div>
+            <>
+              <div>
+                Vous avez selectionné {selectedUsers.length} utilisteurs
+              </div>
+              <div className={styles.reset} onClick={handleDeselectAll}>
+                RESET
+              </div>
+            </>
           }
         </div>
       </div>

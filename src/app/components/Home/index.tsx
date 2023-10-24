@@ -60,10 +60,14 @@ const View: React.FC<Props> = () => {
     }
   };
 
+  const handleDeselectAll = () => {
+    setSelectedUsers([]); // Désélectionne tous les utilisateurs
+  };
+
   return (
     <div className={styles.home}>
       <div className={styles.homeContent}>
-        <LeftHome users={users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} />
+        <LeftHome users={users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} handleDeselectAll={handleDeselectAll} />
         <RightHome totalAge={totalAge} selectedUsers={selectedUsers} />
       </div>
     </div>
