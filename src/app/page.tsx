@@ -4,10 +4,10 @@ import Home from './pages/home';
 export default function Page() {
   return (
     <div>
-      <Metadata>
+      {/*     <Metadata>
         <title>Votre titre ici</title>
         <meta name="description" content="Votre description ici" />
-      </Metadata>
+      </Metadata> */}
       <Home />
     </div>
   );

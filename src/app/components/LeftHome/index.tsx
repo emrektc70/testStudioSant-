@@ -37,7 +37,6 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect, han
   const [selectedUserDetails, setSelectedUserDetails] = useState<User | null>(null);
   const [openPopup, setOpenPopup] = useState(false);
 
-  console.log(selectedUserDetails)
   const handleMoreClick = (user: User) => {
     setSelectedUserDetails(user);
     setOpenPopup(true);
@@ -49,10 +48,11 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect, han
 
 
   const filterUsers = () => {
-    return users.filter((user) =>
+    return (users && users.filter((user) =>
       user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.lastName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    )
+    )
   };
 
   const handlePrintInput = useCallback(() => {
