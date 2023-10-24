@@ -25,7 +25,6 @@ const View: React.FC<Props> = () => {
         throw new Error('Erreur lors de la récupération des utilisateurs');
       }
       const data = await response.json();
-      console.log(data);
       setUsers(data.users);
     } catch (error) {
       console.error(error);
@@ -44,6 +43,11 @@ const View: React.FC<Props> = () => {
     const totalAge = selectedUsers.reduce((total, u) => total + u.age, 0);
     const newAverageAge = selectedUsersCount > 0 ? totalAge / selectedUsersCount : null;
     setTotalAge(newAverageAge);
+    if (typeof document !== 'undefined') {
+      const someElement = document.getElementById('yourElementId');
+      if (someElement) {
+      }
+    }
   }, [selectedUsers]);
 
   const handleUserSelect = (user: User) => {

@@ -27,8 +27,12 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
     );
   };
 
+  console.log(open, searchTerm)
   const handlePrintInput = useCallback(() => {
     setOpen(!open)
+    if (open === true) {
+      setSearchTerm('')
+    }
   }, [open])
   return (
     <div className={styles.left}>
