@@ -37,22 +37,28 @@ const View: React.FC<Props> = () => {
   }, []);
 
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
-  const [totalAge, setTotalAge] = useState<number>(0);
+  const [totalAge, setTotalAge] = useState<number | null>(null);
+
+  useEffect(() => {
+    const selectedUsersCount = selectedUsers.length;
+    const totalAge = selectedUsers.reduce((total, u) => total + u.age, 0);
+    const newAverageAge = selectedUsersCount > 0 ? totalAge / selectedUsersCount : null;
+    setTotalAge(newAverageAge);
+  }, [selectedUsers]);
 
   const handleUserSelect = (user: User) => {
     if (selectedUsers.some((selectedUser) => selectedUser.id === user.id)) {
       setSelectedUsers(selectedUsers.filter((u) => u.id !== user.id));
-      setTotalAge(totalAge - user.age);
     } else {
       setSelectedUsers([...selectedUsers, user]);
-      setTotalAge(totalAge + user.age);
     }
   };
+
   return (
     <div className={styles.home}>
       <div className={styles.homeContent}>
         <LeftHome users={users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} />
-        <RightHome totalAge={totalAge} />
+        <RightHome totalAge={totalAge} selectedUsers={selectedUsers} />
       </div>
     </div>
   );
