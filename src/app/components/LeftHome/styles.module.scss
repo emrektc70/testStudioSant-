@@ -1,0 +1,52 @@
+.left {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.leftContent {
+    width: 450px;
+    height: 450px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.title {
+    margin-bottom: 48px;
+}
+
+.userList {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: white white;
+    gap: 8px;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #ffffff;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        margin-left: 8px;
+    }
+}
+
+.userItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 8px;
+}
