@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 type User = {
@@ -27,13 +27,18 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
     );
   };
 
-  console.log(open, searchTerm)
   const handlePrintInput = useCallback(() => {
     setOpen(!open)
     if (open === true) {
       setSearchTerm('')
     }
   }, [open])
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      // Code qui utilise document (si nécessaire)
+    }
+  }, []);
   return (
     <div className={styles.left}>
       <div className={styles.leftContent}>
@@ -46,7 +51,9 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect }) =
           {
             open === false ?
               <div>
-                Faire une recherche            </div> : <div>
+                Faire une recherche
+              </div> :
+              <div>
                 Annuler
               </div>
           }

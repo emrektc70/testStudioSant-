@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import Image from 'next/image';
 
 import gateau from "./assets/cake.png"
+import { useEffect } from "react";
 
 type User = {
   id: number;
@@ -17,7 +18,11 @@ type Props = {
 };
 
 const View: React.FC<Props> = ({ totalAge, selectedUsers }) => {
-  console.log(selectedUsers.length)
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      // Code qui utilise document (si nécessaire)
+    }
+  }, []);
   return (
     <div className={styles.right}>
       <div className={styles.rightContent}>

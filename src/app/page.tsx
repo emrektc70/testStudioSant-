@@ -1,14 +1,14 @@
-"use client";
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './components/Home'
-import React from 'react';
+import Metadata from 'next/head'
+import Home from './pages/home';
 
-export default function App() {
+export default function Page() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-  )
+    <div>
+      <Metadata>
+        <title>Votre titre ici</title>
+        <meta name="description" content="Votre description ici" />
+      </Metadata>
+      <Home />
+    </div>
+  );
 }
