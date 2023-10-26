@@ -1,10 +1,10 @@
 import React from 'react';
-import Home from '../components/Home';
+import About from '../components/About';
 
 export default function Homepage({ users }: { users: User[] }) {
   return (
     <div>
-      <Home users={users} />
+      <About users={users} />
     </div>
   );
 }
@@ -18,7 +18,6 @@ export async function getServerSideProps() {
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
     const users: User[] = await response.json();
-    const user: User = users[0];
 
     return {
       props: {

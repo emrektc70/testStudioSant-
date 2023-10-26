@@ -6,14 +6,7 @@ import gateau from "./assets/cake.png"
 import not from "./assets/not.png"
 import { useEffect } from "react";
 
-type User = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
-  gender: string;
-  email: string;
-};
+
 type Props = {
   totalAge: number | null;
   selectedUsers: User[];

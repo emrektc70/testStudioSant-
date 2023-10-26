@@ -3,21 +3,15 @@ import React, { useEffect, useState } from 'react';
 import LeftHome from '../LeftHome';
 import RightHome from '../RightHome';
 import styles from './styles.module.scss';
-import { getUsers } from '@/app/api/getUser';
+import Layout from '@/app/layout';
 
-type Props = {};
+type Props = {
+  users: User[];
+};
 
-const View: React.FC<Props> = () => {
-  const [users, setUsers] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // Nouvel état pour gérer le chargement
 
-  useEffect(() => {
-    getUsers().then((data) => {
-      setUsers(data);
-      setIsLoading(false);
-    });
-  }, []);
 
+const View: React.FC<Props> = ({ users }) => {
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
   const [totalAge, setTotalAge] = useState<number | null>(null);
 
@@ -46,15 +40,13 @@ const View: React.FC<Props> = () => {
   };
 
   return (
-    <div className={styles.home}>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
+    <div className={styles.home}>*
+      <Layout>
         <div className={styles.homeContent}>
-          <LeftHome users={users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} handleDeselectAll={handleDeselectAll} />
+          <LeftHome users={users && users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} handleDeselectAll={handleDeselectAll} />
           <RightHome totalAge={totalAge} selectedUsers={selectedUsers} />
         </div>
-      )}
+      </Layout>
     </div>
   );
 };
