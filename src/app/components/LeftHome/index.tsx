@@ -68,7 +68,7 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect, han
       <div className={styles.leftContent}>
         <div className={styles.return}>
           <Link href={result}>
-            {result}
+            Visite la page: {result}
           </Link>
         </div>
         <h2 className={styles.title}>Liste des utilisateurs :</h2>

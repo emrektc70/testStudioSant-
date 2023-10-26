@@ -49,7 +49,6 @@ const View: React.FC<Props> = ({ totalAge, selectedUsers }) => {
                 Aucun utilisateur sélectionné
               </div>
           }
-
         </div>
       </div>
 
