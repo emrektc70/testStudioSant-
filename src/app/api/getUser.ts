@@ -1,5 +1,3 @@
-// api.ts
-
 const apiUrl = "https://dummyjson.com/users";
 
 export const getUsers = async () => {

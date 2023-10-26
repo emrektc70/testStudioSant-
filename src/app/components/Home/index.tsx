@@ -9,7 +9,7 @@ type Props = {};
 
 const View: React.FC<Props> = () => {
   const [users, setUsers] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // Nouvel état pour gérer le chargement
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getUsers().then((data) => {

@@ -8,9 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
-
-
+import Link from 'next/link';
 
 type Props = {
   users: User[];
@@ -57,11 +55,22 @@ const LeftHome: React.FC<Props> = ({ users, selectedUsers, handleUserSelect, han
   }, []);
 
 
+  const currentURL = window.location.href;
+  const parts = currentURL.split('/');
+
+  const result = parts.includes('home2') ? '/' : '/home2';
+
+
 
 
   return (
     <div className={styles.left}>
       <div className={styles.leftContent}>
+        <div className={styles.return}>
+          <Link href={result}>
+            {result}
+          </Link>
+        </div>
         <h2 className={styles.title}>Liste des utilisateurs :</h2>
         <div className={styles.boxContent}>
           {

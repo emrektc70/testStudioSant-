@@ -1,15 +1,11 @@
-"use client"
 import React, { useEffect, useState } from 'react';
 import LeftHome from '../LeftHome';
 import RightHome from '../RightHome';
 import styles from './styles.module.scss';
-import Layout from '@/app/layout';
 
 type Props = {
   users: User[];
 };
-
-
 
 const View: React.FC<Props> = ({ users }) => {
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
@@ -40,13 +36,11 @@ const View: React.FC<Props> = ({ users }) => {
   };
 
   return (
-    <div className={styles.home}>*
-      <Layout>
-        <div className={styles.homeContent}>
-          <LeftHome users={users && users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} handleDeselectAll={handleDeselectAll} />
-          <RightHome totalAge={totalAge} selectedUsers={selectedUsers} />
-        </div>
-      </Layout>
+    <div className={styles.home}>
+      <div className={styles.homeContent}>
+        <LeftHome users={users && users} selectedUsers={selectedUsers} handleUserSelect={handleUserSelect} handleDeselectAll={handleDeselectAll} />
+        <RightHome totalAge={totalAge} selectedUsers={selectedUsers} />
+      </div>
     </div>
   );
 };
